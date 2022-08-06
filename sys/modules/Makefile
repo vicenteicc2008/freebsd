@@ -219,6 +219,7 @@ SUBDIR=	\
 	lpt \
 	${_mac_biba} \
 	${_mac_bsdextended} \
+	${_mac_ddb} \
 	${_mac_ifoff} \
 	${_mac_lomac} \
 	${_mac_mls} \
@@ -308,6 +309,8 @@ SUBDIR=	\
 	pwm \
 	${_qat} \
 	${_qatfw} \
+	${_qat_c2xxx} \
+	${_qat_c2xxxfw} \
 	${_qlxge} \
 	${_qlxgb} \
 	${_qlxgbe} \
@@ -546,6 +549,9 @@ _vmware=	vmware
 .if ${KERN_OPTS:MMAC} || defined(ALL_MODULES)
 _mac_biba=	mac_biba
 _mac_bsdextended= mac_bsdextended
+.if ${KERN_OPTS:MDDB} || defined(ALL_MODULES)
+_mac_ddb=	mac_ddb
+.endif
 _mac_ifoff=	mac_ifoff
 _mac_lomac=	mac_lomac
 _mac_mls=	mac_mls
@@ -679,6 +685,8 @@ _ntb=		ntb
 _ocs_fc=	ocs_fc
 _qat=		qat
 _qatfw=		qatfw
+_qat_c2xxx=	qat_c2xxx
+_qat_c2xxxfw=	qat_c2xxxfw
 .if ${MK_OFED} != "no" || defined(ALL_MODULES)
 _rdma=		rdma
 .endif
